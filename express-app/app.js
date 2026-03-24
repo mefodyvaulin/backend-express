@@ -14,7 +14,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', isAuthenticated);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+function isAuthenticated (req, res, next) {
+    if (Boolean(req.query.auth)) {
+        next();
+    }
+    else {
+        res.status(401).json()
+    }
+}
 module.exports = app;
