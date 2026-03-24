@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const users = [{'id' : 1, 'name': 'Кристина'}, {'id' : 2, 'name': 'Мефодий'}]
-const globalId = 0
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send({'item' : users});
